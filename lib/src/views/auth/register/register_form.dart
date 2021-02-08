@@ -9,6 +9,9 @@ class _RegistrationFormState extends State<RegistrationForm>{
   final _registerFormKey = GlobalKey<FormState>();
   final userNameController = TextEditingController();
   final userPhoneController = TextEditingController();
+  final userEmailController = TextEditingController();
+  final userPasswordController = TextEditingController();
+  final userConfirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +39,35 @@ class _RegistrationFormState extends State<RegistrationForm>{
                     return null;
                   },
                 ),
+                TextFormField(
+                  controller: userEmailController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please Enter Email';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  obscureText: true,
+                  controller: userPasswordController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please Enter Password';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  obscureText: true,
+                  controller: userConfirmPasswordController,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please Confirm Password';
+                    }
+                    return null;
+                  },
+                ),
                 ElevatedButton(
                     onPressed: () {
                       if (_registerFormKey.currentState.validate()) {
@@ -43,7 +75,7 @@ class _RegistrationFormState extends State<RegistrationForm>{
                             .showSnackBar(SnackBar(content: Text('Successful')));
                       }
                     },
-                    child: Text('Submit')
+                    child: Text('Register')
                 ),
               ],
             )),

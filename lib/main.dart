@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sobon/src/views/auth/register/register_form.dart';
+import 'package:sobon/src/views/dashboard/dashboard.dart';
 import 'package:sobon/src/views/splash_screen/splash_screen.dart';
 
 void main() {
@@ -8,7 +9,8 @@ void main() {
     initialRoute: '/',
       routes: {
         '/': (context) => MyApp(),
-        '/registration':(context) => RegistrationForm()
+        '/registration':(context) => RegistrationForm(),
+        '/dashboard':(context) => DashboardUI()
       },
   ));
 }

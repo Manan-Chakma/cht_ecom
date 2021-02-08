@@ -14,6 +14,7 @@ class _LoginFormState extends State<LoginForm> {
   final userNameController = TextEditingController();
   final userPhoneController = TextEditingController();
 
+
   @override
   void dispose() {
     userNameController.dispose();
@@ -46,6 +47,7 @@ class _LoginFormState extends State<LoginForm> {
                     return null;
                   },
                 ),
+
                 ElevatedButton(
                     onPressed: () {
                       if (_loginFormKey.currentState.validate()) {
@@ -53,11 +55,14 @@ class _LoginFormState extends State<LoginForm> {
                             .showSnackBar(SnackBar(content: Text('Successful')));
                       }
                     },
-                    child: Text('Submit')
+                    child: Text('Login')
                 ),
                 GestureDetector(onTap: (){
                   Navigator.pushNamed(context, '/registration');
-                }, child: Text('Open an account'))
+                }, child: Text('Open an account')),
+                GestureDetector(onTap: (){
+                  Navigator.pushNamed(context, '/dashboard');
+                }, child: Text('dashboard'))
 
               ],
             )),
