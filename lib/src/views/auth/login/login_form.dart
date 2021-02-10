@@ -24,46 +24,50 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Form(
-              key: _loginFormKey,
-              child: Column(
-                children: <Widget>[
-                  UserPhone(userPhoneController),
-                  UserPassword(controller: userPasswordController),
-                  Container(
-                    alignment: Alignment.center,
-                    child: FractionallySizedBox(
-                      widthFactor: 0.7,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            if (_loginFormKey.currentState.validate()) {
-                              Scaffold.of(context).showSnackBar(
-                                  SnackBar(content: Text('Successful')));
-                            }
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Form(
+                  key: _loginFormKey,
+                  child: Column(
+                    children: <Widget>[
+                      UserPhone(userPhoneController),
+                      UserPassword(controller: userPasswordController),
+                      Container(
+                        alignment: Alignment.center,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.7,
+                          child: ElevatedButton(
+                              onPressed: () {
+                                if (_loginFormKey.currentState.validate()) {
+                                  Scaffold.of(context).showSnackBar(
+                                      SnackBar(content: Text('Successful')));
+                                }
+                              },
+                              child: Text('Login')),
+                        ),
+                      ),
+                      Text("Don't have an account?"),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/registration');
                           },
-                          child: Text('Login')),
-                    ),
-                  ),
-                  Text("Don't have an account?"),
-                  GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/registration');
-                      },
-                      child: Text('Sign Up',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.indigo))),
-                  // GestureDetector(
-                  //     onTap: () {
-                  //       Navigator.pushNamed(context, '/dashboard');
-                  //     },
-                  //     child: Text('dashboard'))
-                ],
-              )),
-        ],
+                          child: Text('Sign Up',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.indigo))),
+                      // GestureDetector(
+                      //     onTap: () {
+                      //       Navigator.pushNamed(context, '/dashboard');
+                      //     },
+                      //     child: Text('dashboard'))
+                    ],
+                  )),
+            ],
+          ),
+        ),
       ),
     );
   }
