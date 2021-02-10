@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sobon/src/views/auth/common/common_widgets.dart';
 
 class RegistrationForm extends StatefulWidget{
   @override
@@ -16,70 +17,33 @@ class _RegistrationFormState extends State<RegistrationForm>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Form(
-            key: _registerFormKey,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: userNameController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please Enter Username';
-                    }
-                    return null;
-                  },
+      body: Form(
+          key: _registerFormKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              UserName(userNameController),
+              UserEmail(userEmailController),
+              UserPhone(userPhoneController),
+              UserPassword(controller: userPasswordController),
+              UserPassword(controller: userConfirmPasswordController, confirm: true),
+              Container(
+                alignment: Alignment.center,
+                child: FractionallySizedBox(
+                  widthFactor: 0.7,
+                  child: ElevatedButton(
+                      onPressed: () {
+                        if (_registerFormKey.currentState.validate()) {
+                          Scaffold.of(context)
+                              .showSnackBar(SnackBar(content: Text('Successful')));
+                        }
+                      },
+                      child: Text('Register')
+                  ),
                 ),
-                TextFormField(
-                  controller: userPhoneController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please Enter Phone';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: userEmailController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please Enter Email';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  obscureText: true,
-                  controller: userPasswordController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please Enter Password';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  obscureText: true,
-                  controller: userConfirmPasswordController,
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please Confirm Password';
-                    }
-                    return null;
-                  },
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      if (_registerFormKey.currentState.validate()) {
-                        Scaffold.of(context)
-                            .showSnackBar(SnackBar(content: Text('Successful')));
-                      }
-                    },
-                    child: Text('Register')
-                ),
-              ],
-            )),
-      ),
+              ),
+            ],
+          )),
     );
   }
 

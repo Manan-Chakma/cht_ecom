@@ -4,7 +4,7 @@ import 'package:sobon/src/views/dashboard/dashboard.dart';
 import 'package:sobon/src/views/splash_screen/splash_screen.dart';
 
 void main() {
-  runApp(new MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
       routes: {
