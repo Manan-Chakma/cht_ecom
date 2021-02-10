@@ -44,7 +44,7 @@ class UserPhone extends StatelessWidget {
       controller: userPhoneController,
       labelText: 'Phone',
       labelHint: '017********',
-      inputType: TextInputType.text,
+      inputType: TextInputType.number,
       message: 'Enter Phone',
     );
   }
@@ -68,7 +68,6 @@ class UserPassword extends StatelessWidget {
       controller: controller,
       labelText: passwordLabelText,
       isObscure: true,
-      inputType: TextInputType.number,
       message: message,
     );
   }
